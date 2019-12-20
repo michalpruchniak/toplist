@@ -1,0 +1,26 @@
+.top{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.top .singleElement{
+    position: relative;
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    background-size: cover;
+    margin-right: 10px;
+}
+.top .singleElement .index{
+    position: absolute;
+    top:5px;
+    left: 5px;
+    font-size: 21px;
+    background-color: #000;
+    color: #FFF;
+    font-weight: bold;
+    padding: 5px;
+    opacity: 0.8;
+}

@@ -9,4 +9,8 @@ class ToplistsController extends Controller
     public function index($id){
         return view('welcome')->with('toplistid', $id);
     }
+    public function top($id){
+        // return view('top')->with('id', $id);
+        return view('top')->with('id', $id);
+    }
 }

@@ -6360,6 +6360,25 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/toplist/top.css":
+/*!*********************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/components/toplist/top.css ***!
+  \*********************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".top{\n    list-style-type: none;\n    display: -webkit-box;\n    display: flex;\n    flex-wrap: wrap;\n\n}\n\n.top .singleElement{\n    position: relative;\n    width: 300px;\n    height: 400px;\n    overflow: hidden;\n    background-size: cover;\n    margin-right: 10px;\n}\n.top .singleElement .index{\n    position: absolute;\n    top:5px;\n    left: 5px;\n    font-size: 21px;\n    background-color: #000;\n    color: #FFF;\n    font-weight: bold;\n    padding: 5px;\n    opacity: 0.8;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/vote/style.css":
 /*!********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/js/components/vote/style.css ***!
@@ -6372,7 +6391,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".toplistElements{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-gap: 20px;\n    list-style-type: none;\n\n}\n\n.singleElement{\n    width: 600px;\n    height: 800px;\n    overflow: hidden;\n    background-color: red;\n    background-size: cover;\n    -webkit-filter: grayscale(100%);\n            filter: grayscale(100%);\n    -webkit-transition: 0.3s;\n    transition: 0.3s;\n    cursor: pointer;\n}\n.singleElement:hover{\n    -webkit-filter:grayscale(0%);\n            filter:grayscale(0%);\n}\n", ""]);
+exports.push([module.i, ".toplistElements{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    grid-gap: 20px;\n    list-style-type: none;\n\n}\n\n.toplistElements .singleElement{\n    width: 600px;\n    height: 800px;\n    overflow: hidden;\n    background-size: cover;\n    -webkit-filter: grayscale(100%);\n            filter: grayscale(100%);\n    -webkit-transition: 0.3s;\n    transition: 0.3s;\n    cursor: pointer;\n}\n.toplistElements .singleElement:hover{\n    -webkit-filter:grayscale(0%);\n            filter:grayscale(0%);\n}\n", ""]);
 
 // exports
 
@@ -69460,7 +69479,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/Example */ "./resources/js/components/Example.js");
 
-__webpack_require__(/*! ./components//vote/index */ "./resources/js/components/vote/index.js");
+__webpack_require__(/*! ./components/vote/index */ "./resources/js/components/vote/index.js");
+
+__webpack_require__(/*! ./components/toplist/index */ "./resources/js/components/toplist/index.js");
 
 /***/ }),
 
@@ -69585,6 +69606,156 @@ if (document.getElementById('example')) {
 
 /***/ }),
 
+/***/ "./resources/js/components/toplist/index.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/toplist/index.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Toplist; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _top_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./top.css */ "./resources/js/components/toplist/top.css");
+/* harmony import */ var _top_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_top_css__WEBPACK_IMPORTED_MODULE_3__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var Toplist =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Toplist, _Component);
+
+  function Toplist(props) {
+    var _this;
+
+    _classCallCheck(this, Toplist);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Toplist).call(this, props));
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.baseURL = "http://localhost:8000";
+    _this.state = {
+      elements: []
+    };
+    return _this;
+  }
+
+  _createClass(Toplist, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.getToplist();
+      this.TimerID = setInterval(function () {
+        return _this2.getToplist();
+      }, 800);
+    }
+  }, {
+    key: "getToplist",
+    value: function getToplist() {
+      var _this3 = this;
+
+      var id = this.props.id;
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("ajax/top/" + id).then(function (res) {
+        var elements = res.data;
+
+        _this3.setState({
+          elements: elements
+        });
+
+        console.log(_this3.state.elements);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "top"
+      }, this.state.elements.map(function (element, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: element.id
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "singleElement",
+          style: {
+            backgroundImage: "url(" + element.photo + ")"
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "index"
+        }, "# ", index + 1)));
+      })));
+    }
+  }]);
+
+  return Toplist;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+if (document.getElementById('toplist')) {
+  var component = document.getElementById('toplist');
+  var props = Object.assign({}, component.dataset);
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Toplist, props), component);
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/toplist/top.css":
+/*!*************************************************!*\
+  !*** ./resources/js/components/toplist/top.css ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/postcss-loader/src??ref--6-2!./top.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/components/toplist/top.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./resources/js/components/vote/index.js":
 /*!***********************************************!*\
   !*** ./resources/js/components/vote/index.js ***!
@@ -69641,7 +69812,7 @@ function (_Component) {
     _this.state = {
       elements: []
     };
-    _this.hello = _this.hello.bind(_assertThisInitialized(_this));
+    _this.vote = _this.vote.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -69651,9 +69822,8 @@ function (_Component) {
       this.getElements();
     }
   }, {
-    key: "hello",
-    value: function hello(id) {
-      // axios.defaults.baseURL = "http://localhost:8000";
+    key: "vote",
+    value: function vote(id) {
       var vote = {
         element_id: id
       };
@@ -69670,7 +69840,6 @@ function (_Component) {
     value: function getElements() {
       var _this2 = this;
 
-      // axios.defaults.baseURL = "http://localhost:8000";
       var id = this.props.id;
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("ajax/displayelements/" + id).then(function (res) {
         var elements = res.data;
@@ -69679,6 +69848,7 @@ function (_Component) {
           elements: elements
         });
       });
+      console.log(this.state.elements);
     }
   }, {
     key: "render",
@@ -69694,7 +69864,7 @@ function (_Component) {
           key: element.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           onClick: function onClick() {
-            return _this3.hello(element.id);
+            return _this3.vote(element.id);
           },
           className: "singleElement",
           style: {

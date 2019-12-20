@@ -6,16 +6,15 @@
 
 }
 
-.singleElement{
+.toplistElements .singleElement{
     width: 600px;
     height: 800px;
     overflow: hidden;
-    background-color: red;
     background-size: cover;
     filter: grayscale(100%);
     transition: 0.3s;
     cursor: pointer;
 }
-.singleElement:hover{
+.toplistElements .singleElement:hover{
     filter:grayscale(0%);
 }

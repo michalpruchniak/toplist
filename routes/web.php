@@ -29,7 +29,7 @@ Route::group(['prefix' => 'ajax'], function(){
         'uses' => 'AjaxController@addVote',
         'as' => 'ajax.addVote'
     ]);
-    Route::get('/top', [
+    Route::get('/top/{id}', [
         'uses' => 'AjaxController@toplist',
         'as' => 'ajax.top'
     ]);
@@ -37,4 +37,8 @@ Route::group(['prefix' => 'ajax'], function(){
 Route::get('/toplist/{id}', [
     'uses' => 'ToplistsController@index',
     'as' => 'toplist.index'
+]);
+Route::get('/top/{id}', [
+    'uses' => 'ToplistsController@top',
+    'as' => 'toplist.top'
 ]);

@@ -35,6 +35,7 @@ export default class Vote extends Component {
           const elements = res.data;
           this.setState({ elements });
         })
+        console.log(this.state.elements);
     }
 
 

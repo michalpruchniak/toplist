@@ -26,12 +26,12 @@ class AjaxController extends Controller
             ]);
     }
 
-    public function toplist(){
-        $toplists = ToplistElements::with('vote')->get()->sortBy(function($toplist)
+    public function toplist($id){
+        $toplists = ToplistElements::where('toplist_id', $id)->with('vote')->get()->sortByDesc(function($toplist)
 {
             return $toplist->vote->count();
         });
-        return json_encode($toplists);
+        return json_encode($toplists->values());
 
 
     }
