@@ -24,7 +24,6 @@ export default class Toplist extends Component {
         .then(res => {
           const elements = res.data;
           this.setState({ elements });
-        //   console.log(this.state.elements);
 
         })
     }
@@ -50,6 +49,7 @@ export default class Toplist extends Component {
                         { this.state.elements.map((element, index) => <li key={element.id}>
                             <div  className="singleElement"  style ={ { backgroundImage: "url("+element.photo+")" } }>
                                 <span className="index"># {index+1}</span>
+                                <div className="name">{element.name}</div>
                             </div>
                         </li>)}
                     </ul>

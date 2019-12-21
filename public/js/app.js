@@ -6372,7 +6372,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".top{\n    list-style-type: none;\n    display: -webkit-box;\n    display: flex;\n    flex-wrap: wrap;\n\n}\n\n.top .singleElement{\n    position: relative;\n    width: 300px;\n    height: 400px;\n    overflow: hidden;\n    background-size: cover;\n    margin-right: 10px;\n}\n.top .singleElement .index{\n    position: absolute;\n    top:5px;\n    left: 5px;\n    font-size: 21px;\n    background-color: #000;\n    color: #FFF;\n    font-weight: bold;\n    padding: 5px;\n    opacity: 0.8;\n}\n", ""]);
+exports.push([module.i, ".top{\n    list-style-type: none;\n    display: -webkit-box;\n    display: flex;\n    flex-wrap: wrap;\n\n}\n\n.top .singleElement{\n    position: relative;\n    width: 300px;\n    height: 400px;\n    overflow: hidden;\n    background-size: cover;\n    margin-right: 10px;\n}\n.top .singleElement .index{\n    position: absolute;\n    top:5px;\n    left: 5px;\n    font-size: 21px;\n    background-color: #000;\n    color: #FFF;\n    font-weight: bold;\n    padding: 5px;\n    opacity: 0.8;\n}\n.top .name {\n    position: absolute;\n    bottom: 0px;\n    width: 100%;\n    background-color: rgba(0,0,0, 0.7);\n    text-align: center;\n    color: #FFF;\n    font-size: 20px;\n    padding: 10px;\n}\n", ""]);
 
 // exports
 
@@ -69745,8 +69745,7 @@ function (_Component) {
 
         _this2.setState({
           elements: elements
-        }); //   console.log(this.state.elements);
-
+        });
       });
     }
   }, {
@@ -69780,7 +69779,9 @@ function (_Component) {
           }
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "index"
-        }, "# ", index + 1)));
+        }, "# ", index + 1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "name"
+        }, element.name)));
       })));
     }
   }]);
