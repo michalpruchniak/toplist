@@ -16,22 +16,29 @@ class AjaxController extends Controller
 
     public function addVote(Request $request){
         $id = 1;
-        $element = ToplistElements::find($request->id);
+        $element = ToplistElements::find( $request->vote['element_id']);
 
         Validator::make($request->vote, [
             'element_id' => 'required',
         ])->validate();
             vote::create([
-                'toplist_elements_id' => $request->vote['element_id']
+                'toplist_elements_id' => $element->id,
+                'toplist_id' => $element->toplist_id
             ]);
     }
 
     public function toplist($id){
         $toplists = ToplistElements::where('toplist_id', $id)->with('vote')->get()->sortByDesc(function($toplist)
-{
+        {
             return $toplist->vote->count();
         });
         return json_encode($toplists->values());
+
+
+    }
+    public function countVotes($id){
+        $toplists = vote::where('toplist_id', $id)->count();
+        return $toplists;
 
 
     }

@@ -37,6 +37,17 @@ export default class Vote extends Component {
         })
         console.log(this.state.elements);
     }
+    countVotes(){
+        const id = this.props.id;
+
+
+        axios.get(`ajax/displayelements/` + id)
+        .then(res => {
+          const elements = res.data;
+          this.setState({ elements });
+        })
+        console.log(this.state.elements);
+    }
 
 
 
