@@ -13,7 +13,9 @@ export default class Countvotes extends Component {
     render() {
 
         return (
-        <div>{this.props.count}</div>
+        <span className="countVotes">
+            Votes: {this.props.count}
+        </span>
 
         );
     }

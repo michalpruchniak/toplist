@@ -25,6 +25,10 @@ Route::group(['prefix' => 'ajax'], function(){
         'uses' => 'AjaxController@getElements',
         'as' => 'ajax.getElements'
     ]);
+    Route::get('/countelements/{id}', [
+        'uses' => 'AjaxController@countElements',
+        'as' => 'ajax.countElements'
+    ]);
     Route::post('/vote', [
         'uses' => 'AjaxController@addVote',
         'as' => 'ajax.addVote'

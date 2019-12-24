@@ -19,7 +19,6 @@ export default class Toplist extends Component {
     getToplist(){
         const id = this.props.id;
 
-
         axios.get(`ajax/top/` + id)
         .then(res => {
           const elements = res.data;

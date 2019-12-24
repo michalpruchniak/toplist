@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import Loading from './components/Loading';
+import Voteelements from './components/Voteelements';
 import './style.css';
 
 
@@ -8,69 +10,39 @@ export default class Vote extends Component {
     constructor(props){
         super(props);
         axios.defaults.baseURL = "http://localhost:8000";
-        this.state = {elements: [] };
-        this.vote = this.vote.bind(this);
+        this.state = {elements: [], loading: true, error: false, countElements: 0 };
     }
     componentDidMount(){
-        this.getElements();
-    }
-    vote(id){
-        const vote = {
-            element_id: id
-        }
-
-        axios.post(`ajax/vote`, { vote })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
         this.getElements();
     }
     getElements(){
         const id = this.props.id;
 
 
-        axios.get(`ajax/displayelements/` + id)
+        axios.get(`ajax/countelements/` + id)
         .then(res => {
-          const elements = res.data;
-          this.setState({ elements });
+          this.setState({ countElements: res.data, loading: false });
+          console.log(this.state.countElements);
+        }).catch(error => {
+            this.setState({ error });
         })
         console.log(this.state.elements);
     }
-    countVotes(){
-        const id = this.props.id;
-
-
-        axios.get(`ajax/displayelements/` + id)
-        .then(res => {
-          const elements = res.data;
-          this.setState({ elements });
-        })
-        console.log(this.state.elements);
-    }
-
-
 
     render() {
+        if(this.state.countElements < 3 && this.state.loading == false) {
+            return <div className="container text-center">Toplist require 3 elements or more to display.</div>
+        } else if(this.state.error !== false) {
+            return <div className="container text-center">Toplist require 3 elements or more to display.</div>
 
-        return (
-            <div className="container">
+        } else {
+            return <div className="container"><Voteelements id={this.props.id} /></div>
+        }
 
-                {this.state.elements && this.state.elements.length !== 2 ? (
-                    <h2>Brak elementów do wyświetlenia</h2>
-                ) : (
-                    <ul className="toplistElements">
-                        { this.state.elements.map(element => <li key={element.id}>
-                            <div onClick={() => this.vote(element.id)} className="singleElement"  style ={ { backgroundImage: "url("+element.photo+")" } }>
-                            </div>
-                        </li>)}
-                    </ul>
-                )}
-            </div>
 
-        );
+        }
     }
-}
+
 
 
 if (document.getElementById('vote')) {

@@ -3,12 +3,13 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
     list-style-type: none;
+    justify-items: center;
 
 }
 
 .toplistElements .singleElement{
-    width: 600px;
-    height: 800px;
+    width: 500px;
+    height: 600px;
     overflow: hidden;
     background-size: cover;
     filter: grayscale(100%);
@@ -17,4 +18,10 @@
 }
 .toplistElements .singleElement:hover{
     filter:grayscale(0%);
+}
+
+.BeatLoader{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }

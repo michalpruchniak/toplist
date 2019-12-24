@@ -14,6 +14,11 @@ class AjaxController extends Controller
         return json_encode($toplist);
     }
 
+    public function countElements($id){
+        $countElements = ToplistElements::where('toplist_id', $id)->count();
+        return $countElements;
+    }
+
     public function addVote(Request $request){
         $id = 1;
         $element = ToplistElements::find( $request->vote['element_id']);
