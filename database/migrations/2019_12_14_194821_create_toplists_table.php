@@ -16,6 +16,8 @@ class CreateToplistsTable extends Migration
         Schema::create('toplists', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('cover');
+            $table->string('slug');
             $table->timestamps();
         });
     }

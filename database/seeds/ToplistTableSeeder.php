@@ -13,7 +13,9 @@ class ToplistTableSeeder extends Seeder
     public function run()
     {
         Toplist::create([
-            'name' => 'Actress'
+            'name' => 'Actress',
+            'slug' => 'actress',
+            'cover' => 'https://upload.wikimedia.org/wikipedia/commons/f/f2/Gal_Gadot_by_Gage_Skidmore_2.jpg'
         ]);
     }
 }

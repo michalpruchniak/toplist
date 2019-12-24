@@ -42,11 +42,19 @@ Route::group(['prefix' => 'ajax'], function(){
         'as' => 'ajax.top'
     ]);
 });
-Route::get('/toplist/{id}', [
-    'uses' => 'ToplistsController@index',
-    'as' => 'toplist.index'
+Route::get('/all-toplists', [
+    'uses' => 'FrontendController@allToplists',
+    'as' => 'toplists.all'
 ]);
-Route::get('/top/{id}', [
+Route::get('/toplist/{slug}', [
+    'uses' => 'ToplistsController@index',
+    'as' => 'toplist.vote'
+]);
+Route::get('/top/{slug}', [
     'uses' => 'ToplistsController@top',
     'as' => 'toplist.top'
+]);
+Route::get('/latest', [
+    'uses' => 'FrontendController@latestToplist',
+    'as' => 'vote.latest'
 ]);
