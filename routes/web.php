@@ -54,7 +54,7 @@ Route::get('/top/{slug}', [
     'uses' => 'ToplistsController@top',
     'as' => 'toplist.top'
 ]);
-Route::get('/latest', [
+Route::get('/', [
     'uses' => 'FrontendController@latestToplist',
     'as' => 'vote.latest'
 ]);
